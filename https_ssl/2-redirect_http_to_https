@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Define the HAProxy socket (adjust as per your HAProxy configuration)
+HAPROXY_SOCKET="/var/run/haproxy.sock"
+
+# Send commands to HAProxy via the socket to dynamically configure redirection
+echo "enable frontend www-ssl" | socat stdio ${HAPROXY_SOCKET}
+echo "bind :80 redirect scheme https code 301 if !{ ssl_fc }" | socat stdio ${HAPROXY_SOCKET}
+
