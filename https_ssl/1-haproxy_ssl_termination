@@ -49,7 +49,7 @@ listen stats
   stats  auth admin:admin
 
 frontend ALL
-        bind *:80
+        bind *:443
         bind *:443 ssl crt /etc/letsencrypt/archive/www.chukwuonyejustice.tech/chukwuonyejustice.pem
         mode http
 
